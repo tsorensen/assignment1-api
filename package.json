@@ -1,0 +1,28 @@
+{
+  "name": "assignment1-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha test/reps test/api",
+    "test:unit": "mocha test/reps",
+    "test:api": "mocha test/api",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgm-ria-spring-2016/assignment1-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dgm-ria-spring-2016/assignment1-api/issues"
+  },
+  "homepage": "https://github.com/dgm-ria-spring-2016/assignment1-api#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "supertest": "^1.1.0",
+    "supertest-as-promised": "^2.0.2"
+  }
+}
