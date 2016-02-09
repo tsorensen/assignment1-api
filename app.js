@@ -1,36 +1,36 @@
+var express = require('express');
+var app = express();
 var reps = require('./lib/reps');
 
-reps.allByZip('84606', function(err, results) {
-  if(err) {
-    return console.log(err);
-  }
-  console.log(results);
+app.get('/all/by-zip/:zip', function(req, res, next) {
+  reps.allByZip(req.params.zip, function(err, people) {
+    if(err) { return next(err); }
+    res.json(people);
+  });
 });
 
-reps.repsByName('Smith', function(err, results) {
-  if(err) {
-    return console.log(err);
-  }
-  console.log(results);
+app.get('/reps/by-name/:name', function(req, res, next) {
+
 });
 
-reps.repsByState('UT', function(err, results) {
-  if(err) {
-    return console.log(err);
-  }
-  console.log(results);
+app.get('/reps/by-state/:state', function(req, res, next) {
+
 });
 
-reps.sensByName('Hatch', function(err, results) {
-  if(err) {
-    return console.log(err);
-  }
-  console.log(results);
+app.get('/sens/by-name/:name', function(req, res, next) {
+
 });
 
-reps.sensByState('UT', function(err, results) {
-  if(err) {
-    return console.log(err);
-  }
-  console.log(results);
+app.get('/reps/by-state/:state', function(req, res, next) {
+
 });
+
+app.use(err, function(req, res, next) {
+  //error handling
+});
+
+app.listen(3000, function() {
+  console.log('Server listening on port 3000');
+});
+
+module.exports = app;
