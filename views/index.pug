@@ -1,0 +1,19 @@
+html
+  head
+    title Who is my representative?
+  body
+    h1 Search for your Representatives
+
+    form(method='get' action='/')
+      select(name='type')
+        option(label='Zip' value='zip')
+        option(label='State' value='state')
+        option(label='Name' value='name')
+      input(type='text' name='search')
+      button Submit
+
+    for rep in reps
+      li
+        p= rep.name
+        p= rep.state
+        p= rep.email
