@@ -1,19 +1,26 @@
 html
   head
+    link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css', rel='stylesheet')
     title Who is my representative?
   body
-    h1 Search for your Representatives
-
-    form(method='get' action='/')
-      select(name='type')
-        option(label='Zip' value='zip')
-        option(label='State' value='state')
-        option(label='Name' value='name')
-      input(type='text' name='search')
-      button Submit
-
-    for rep in reps
-      li
-        p= rep.name
-        p= rep.state
-        p= rep.email
+    .container
+      .row
+        h1.page-header.text-center Search for your Representatives
+        .col-sm-6.col-sm-offset-3
+          form.text-center.form-inline(method='get' action='/')
+            .form-group
+              select.form-control(name='type')
+                option(label='Zip' value='zip') Zip
+                option(label='State' value='state') State
+                option(label='Name' value='name') Name
+            .form-group
+              input.form-control(type='text' name='search')
+            button.btn.btn-primary Submit
+          if reps
+            for rep in reps
+              ul.list-group
+                li.list-group-item
+                  p= rep.name
+                  p= rep.phone
+                  p= rep.party
+                  p= rep.state
