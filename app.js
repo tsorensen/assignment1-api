@@ -14,12 +14,16 @@ app.set('view cache', false);
 
 app.get('/', function(req, res, next) {
   var method;
-  if(req.query.type === 'zip') {
+  if(req.query.group === 'all') {
     method = reps.allByZip;
-  } else if(req.query.type === 'name') {
+  } else if(req.query.group === 'reps' && req.query.type === 'name') {
     method = reps.repsByName;
-  } else if(req.query.type === 'state') {
+  } else if(req.query.group === 'reps' && req.query.type === 'state') {
     method = reps.repsByState;
+  } else if(req.query.group === 'sens' && req.query.type === 'name') {
+    method = reps.sensByName;
+  } else if(req.query.group === 'sens' && req.query.type === 'state') {
+    method = reps.sensByState;
   }
 
   if(method) {

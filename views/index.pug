@@ -8,12 +8,19 @@ html
         h1.page-header.text-center Search for your Representatives
         .col-sm-6.col-sm-offset-3
           form.text-center.form-inline(method='get' action='/')
-            .form-group
+            .form-group(style='padding-right:10px;')
+              input.form-control(type='radio' name='group' value='all' checked=1 style='margin-right:5px; margin-top:-3px;')
+              | All by Zip
+              input.form-control(type='radio' name='group' value='reps' style='margin-left:20px; margin-right:5px; margin-top:-3px;')
+              | Reps
+              input.form-control(type='radio' name='group' value='sens' style='margin-left:20px; margin-right:5px; margin-top:-3px;')
+              | Sens
+              br
+            .form-group(style='padding-right:5px;')
               select.form-control(name='type')
-                option(label='Zip' value='zip') Zip
                 option(label='State' value='state') State
                 option(label='Name' value='name') Name
-            .form-group
+            .form-group(style='padding-right:5px;')
               input.form-control(type='text' name='search')
             button.btn.btn-primary Submit
           if reps
