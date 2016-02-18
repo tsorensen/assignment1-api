@@ -9,20 +9,22 @@ html
         .col-sm-6.col-sm-offset-3
           form.text-center.form-inline(method='get' action='/')
             .form-group(style='padding-right:10px;')
-              input.form-control(type='radio' name='group' value='all' checked=1 style='margin-right:5px; margin-top:-3px;')
+              input.form-control(type='radio' name='group' value='all' checked=(query.group === 'all') style='margin-right:5px; margin-top:-3px;')
               | All by Zip
-              input.form-control(type='radio' name='group' value='reps' style='margin-left:20px; margin-right:5px; margin-top:-3px;')
+              input.form-control(type='radio' name='group' value='reps' checked=(query.group === 'reps') style='margin-left:20px; margin-right:5px; margin-top:-3px;')
               | Reps
-              input.form-control(type='radio' name='group' value='sens' style='margin-left:20px; margin-right:5px; margin-top:-3px;')
+              input.form-control(type='radio' name='group' value='sens' checked=(query.group === 'sens') style='margin-left:20px; margin-right:5px; margin-top:-3px;')
               | Sens
               br
             .form-group(style='padding-right:5px;')
               select.form-control(name='type')
-                option(label='State' value='state') State
-                option(label='Name' value='name') Name
+                option(label='State' value='state' selected=(query.type === 'state')) State
+                option(label='Name' value='name' selected=(query.type === 'name')) Name
             .form-group(style='padding-right:5px;')
-              input.form-control(type='text' name='search')
+              input.form-control(type='text' name='search' value=query.search ? query.search:'')
             button.btn.btn-primary Submit
+          if query.type && query.search && !reps.length
+            p No reps found with #{query.type} of #{query.search}
           if reps
             for rep in reps
               ul.list-group
